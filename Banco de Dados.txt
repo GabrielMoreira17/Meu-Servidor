@@ -1,0 +1,13 @@
+create table Users
+(
+	id serial primary key,
+	usuario varchar (50),
+	passwd varchar (50),
+	email varchar (50)
+);
+
+select * from Users;
+
+INSERT INTO Users (usuario, passwd, email) VALUES ('Moreira', '123456', 'gabrielmoreira2128@gmail.com');
+
+SELECT usuario, passwd FROM Users WHERE usuario ='Moreira'AND passwd = '123456';
