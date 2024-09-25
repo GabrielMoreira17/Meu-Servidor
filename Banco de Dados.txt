@@ -7,13 +7,12 @@ create table Users
 );
 
 select * from Users;
+DELETE FROM Users WHERE id=1;
 
 INSERT INTO Users (usuario, passwd, email) VALUES ('Moreira', '123456', 'gabrielmoreira2128@gmail.com');
 
 SELECT usuario, passwd FROM Users WHERE usuario ='Moreira'AND passwd = '123456';
 
-
----------------------------------------------------------------------------------------------
 
 create table Agenda
 (
@@ -36,6 +35,9 @@ create table Usuarios
 );
 
 INSERT INTO Agenda (Nome, endereco, telefone, email, celular) VALUES ('Joao da Cruz', 'Rua Das Marés', 'Não tem', 'teste@email.com', '123456789');
-INSERT INTO Usuarios (Senha, Email, Login, Ativo) VALUES ('senha123', 'testando@email.com', 'usuario1', 'ativo');
+INSERT INTO Usuarios (nomeUsuario, Senha, Email, Login, Ativo) VALUES ('José', 'senha123', 'testando@email.com', 'usuario1', 'true');
 
 SELECT * FROM Agenda;
+SELECT * FROM Usuarios;
+
+Delete FROM Agenda WHERE id_agenda=2;
