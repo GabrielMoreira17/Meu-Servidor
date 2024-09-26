@@ -34,10 +34,36 @@ create table Usuarios
 	Ativo bool
 );
 
-INSERT INTO Agenda (Nome, endereco, telefone, email, celular) VALUES ('Joao da Cruz', 'Rua Das Marés', 'Não tem', 'teste@email.com', '123456789');
-INSERT INTO Usuarios (nomeUsuario, Senha, Email, Login, Ativo) VALUES ('José', 'senha123', 'testando@email.com', 'usuario1', 'true');
+SELECT * FROM Agenda WHERE Nome like 'A%';
+SELECT * FROM Agenda WHERE Nome like 'B%';
+SELECT * FROM Agenda WHERE Nome like 'C%';
+SELECT * FROM Agenda WHERE Nome like 'D%';
+SELECT * FROM Agenda WHERE Nome like 'E%';
+SELECT * FROM Agenda WHERE Nome like 'F%';
+SELECT * FROM Agenda WHERE Nome like 'G%';
+SELECT * FROM Agenda WHERE Nome like 'H%';
+SELECT * FROM Agenda WHERE Nome like 'I%';
+SELECT * FROM Agenda WHERE Nome like 'J%';
+SELECT * FROM Agenda WHERE Nome like 'K%';
+SELECT * FROM Agenda WHERE Nome like 'L%';
+SELECT * FROM Agenda WHERE Nome like 'M%';
+SELECT * FROM Agenda WHERE Nome like 'N%';
+SELECT * FROM Agenda WHERE Nome like 'O%';
+SELECT * FROM Agenda WHERE Nome like 'P%';
+SELECT * FROM Agenda WHERE Nome like 'Q%';
+SELECT * FROM Agenda WHERE Nome like 'R%';
+SELECT * FROM Agenda WHERE Nome like 'S%';
+SELECT * FROM Agenda WHERE Nome like 'T%';
+SELECT * FROM Agenda WHERE Nome like 'U%';
+SELECT * FROM Agenda WHERE Nome like 'V%';
+SELECT * FROM Agenda WHERE Nome like 'W%';
+SELECT * FROM Agenda WHERE Nome like 'X%';
+SELECT * FROM Agenda WHERE Nome like 'Y%';
+SELECT * FROM Agenda WHERE Nome like 'Z%';
 
 SELECT * FROM Agenda;
+
+SELECT Nome, endereco, telefone, email, celular FROM Agenda WHERE Nome like 'L%';
 SELECT * FROM Usuarios;
 
-Delete FROM Agenda WHERE id_agenda=2;
+DELETE FROM Agenda WHERE id_agenda=13;
