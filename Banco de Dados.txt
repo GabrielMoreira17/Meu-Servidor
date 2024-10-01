@@ -63,6 +63,8 @@ SELECT * FROM Agenda WHERE Nome like 'Z%';
 
 SELECT * FROM Agenda;
 
+UPDATE Agenda SET Nome = 'Pedro', endereco = 'rua Joao casa 10', telefone = '' WHERE id_agenda = 1;
+
 SELECT Nome, endereco, telefone, email, celular FROM Agenda WHERE Nome like 'L%';
 SELECT * FROM Usuarios;
 
