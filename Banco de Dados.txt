@@ -4,9 +4,9 @@ create table Users
 	usuario varchar (50),
 	passwd varchar (50),
 	email varchar (50),
-	ativo bool
+	ativo bool,
+	imagem varchar (255)
 );
-
 
 drop table Users;
 select * from Users;
@@ -28,6 +28,7 @@ create table Agenda
 	telefone varchar (50),
 	email varchar (50),
 	celular varchar (100),
+	imagem varchar (255),
 	idfk int, FOREIGN KEY (idfk) references Users (id)
 );
 
