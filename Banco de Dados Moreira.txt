@@ -1,0 +1,83 @@
+CREATE DATABASE Projeto_Integrador;
+
+CREATE TABLE Cadastro
+(
+	id_user SERIAL PRIMARY KEY,
+	nomeCompleto varchar(255),
+	telefone varchar (20),
+	CPF varchar (15),
+	email varchar (100),
+	senha varchar (100)
+);
+
+DROP TABLE Cadastro;
+
+INSERT INTO Cadastro (nomeCompleto, telefone, CPF, email, senha) VALUES ('Gabriel Moreira', '(46)99105-7504', '100.200.300-90', 'gabriel@email.com', '123');
+
+
+CREATE TABLE Perfil
+(
+	id_perfil serial PRIMARY KEY,
+	descricao varchar (255),
+	RedesSociais varchar (255),
+	cursosExperiencia varchar (255),
+	ativo bool,
+	user_idfk int, FOREIGN KEY (user_idfk) REFERENCES Cadastro(id_user),
+	login_idfk int, FOREIGN KEY (login_idfk) REFERENCES Login(id_login),
+	cursos_pessoais_idfk int, FOREIGN KEY (cursos_pessoais_idfk) REFERENCES CursosPessoais(id_CursosPessoais),
+	vagas_idfk int, FOREIGN KEY (vagas_idfk) REFERENCES Vagas(id_vagas)
+);
+
+
+
+select C.nomeCompleto,P.descricao,C.email from Perfil p 
+Inner join Cadastro C on P.user_idfk = C.id_user
+
+
+insert into perfil(descricao, RedesSociais, cursosExperiencia, ativo, user_idfk, login_idfk, cursos_pessoais_idfk, vagas_idfk)
+VALUES('programador', '@pedro12', 'Analista de Sistema', TRUE, 1, 1, 1, 1);
+
+DROP TABLE Perfil
+
+CREATE TABLE Login
+(
+	id_login SERIAL PRIMARY KEY,
+	email varchar (255),
+	senha varchar (255)
+);
+
+INSERT INTO Login (email, senha) VALUES ('gabriel@email.com', '123456');
+
+CREATE TABLE Cursos
+(
+	id_Cursos SERIAL PRIMARY KEY,
+	Nome_Curso varchar (255),
+	Duracao int,
+	preco int,
+	matrizCurricular varchar(255)
+);
+
+INSERT INTO Cursos (Nome_Curso, Duracao, preco, matrizCurricular) VALUES ('Desenvolvimento de Sistema', '1200', '400', 'Desenvolvimento Web, Modelagem de Dados');
+
+CREATE TABLE Vagas
+(
+	id_vagas SERIAL PRIMARY KEY,
+	area varchar (255),
+	empresa varchar (255),
+	cargaHoraria int,
+	salario int
+);
+
+INSERT INTO Vagas (area, empresa, cargaHoraria, salario) VALUES ('Tecnologia', 'LearnLab', '40', '10000');
+
+CREATE TABLE CursosPessoais
+(
+	id_CursosPessoais SERIAL PRIMARY KEY,
+	NomeCursoPessoal varchar (255),
+	duracaoCursoPessoal int,
+	matrizCurricularPessoal varchar (255),
+	precoCursoPessoal int
+);
+
+INSERT INTO CursosPessoais (NomeCursoPessoal, duracaoCursoPessoal, matrizCurricularPessoal, precoCursoPessoal) VALUES ('Técnico Desenvolvimento de Sistema', '1200', 'Desenvolvimento Web', '600');
+SELECT * FROM CursosPessoais;
