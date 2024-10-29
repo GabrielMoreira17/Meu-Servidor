@@ -71,3 +71,11 @@ SELECT Nome, endereco, telefone, email, celular FROM Agenda WHERE Nome like 'L%'
 SELECT * FROM Usuarios;
 
 DELETE FROM Agenda WHERE id_agenda=13;
+
+
+CREATE TABLE Chat
+(
+	id_chat serial PRIMARY KEY,
+	nome varchar(20),
+	mensagem varchar(255)
+);
