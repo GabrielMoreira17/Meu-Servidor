@@ -36,6 +36,13 @@ table agenda
 
 SELECT Nome, endereco, telefone, email, celular, id_agenda FROM Agenda WHERE Nome like UPPER('g%');
 
+CREATE TABLE Chat
+(
+	id_chat serial PRIMARY KEY,
+	nome varchar(20),
+	mensagem varchar(255)
+);
+
 SELECT * FROM Agenda WHERE Nome like 'A%';
 SELECT * FROM Agenda WHERE Nome like 'B%';
 SELECT * FROM Agenda WHERE Nome like 'C%';
@@ -72,10 +79,3 @@ SELECT * FROM Usuarios;
 
 DELETE FROM Agenda WHERE id_agenda=13;
 
-
-CREATE TABLE Chat
-(
-	id_chat serial PRIMARY KEY,
-	nome varchar(20),
-	mensagem varchar(255)
-);
