@@ -5,8 +5,11 @@ create table Users
 	passwd varchar (50),
 	email varchar (50),
 	ativo bool,
-	imagem varchar (255)
+	imagem varchar (255),
+	nome varchar (255)
 );
+
+
 
 drop table Users;
 select * from Users;
@@ -32,6 +35,7 @@ create table Agenda
 	idfk int, FOREIGN KEY (idfk) references Users (id)
 );
 
+drop table Agenda
 table agenda
 
 SELECT Nome, endereco, telefone, email, celular, id_agenda FROM Agenda WHERE Nome like UPPER('g%');
@@ -42,6 +46,7 @@ CREATE TABLE Chat
 	nome varchar(20),
 	mensagem varchar(255)
 );
+drop table Chat
 
 SELECT * FROM Agenda WHERE Nome like 'A%';
 SELECT * FROM Agenda WHERE Nome like 'B%';
@@ -78,4 +83,3 @@ SELECT Nome, endereco, telefone, email, celular FROM Agenda WHERE Nome like 'L%'
 SELECT * FROM Usuarios;
 
 DELETE FROM Agenda WHERE id_agenda=13;
-
