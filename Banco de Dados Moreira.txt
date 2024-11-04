@@ -10,6 +10,7 @@ CREATE TABLE Cadastro
 	senha varchar (100)
 );
 
+TABLE Cadastro;
 DROP TABLE Cadastro;
 
 INSERT INTO Cadastro (nomeCompleto, telefone, CPF, email, senha) VALUES ('Gabriel Moreira', '(46)99105-7504', '100.200.300-90', 'gabriel@email.com', '123');
@@ -30,7 +31,7 @@ CREATE TABLE Perfil
 
 
 
-select C.nomeCompleto,P.descricao,C.email from Perfil p 
+select C.nomeCompleto,P.descricao,C.email, p.cursosExperiencia from Perfil p 
 Inner join Cadastro C on P.user_idfk = C.id_user
 
 
