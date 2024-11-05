@@ -48,6 +48,17 @@ CREATE TABLE Chat
 );
 drop table Chat
 
+
+CREATE TABLE Tarefas
+(
+	id_tarefas serial PRIMARY KEY,
+	tarefa varchar(255),
+	concluida BOOL,
+	data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	idfk int, FOREIGN KEY (idfk) references Users (id)
+)
+
+
 SELECT * FROM Agenda WHERE Nome like 'A%';
 SELECT * FROM Agenda WHERE Nome like 'B%';
 SELECT * FROM Agenda WHERE Nome like 'C%';
