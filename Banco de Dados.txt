@@ -9,6 +9,8 @@ create table Users
 	nome varchar (255)
 );
 
+select * from users
+update Users set nome = 'Gabriel Moreira' where id =1
 
 
 drop table Users;
