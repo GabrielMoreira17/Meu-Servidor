@@ -48,6 +48,7 @@ CREATE TABLE Chat
 	nome varchar(20),
 	mensagem varchar(255)
 );
+
 drop table Chat
 
 
@@ -60,6 +61,10 @@ CREATE TABLE Tarefas
 	idfk int, FOREIGN KEY (idfk) references Users (id)
 )
 
+SELECT * FROM Tarefas
+delete from tarefas
+
+UPDATE Tarefas SET concluida = TRUE WHERE id_tarefas = 2
 
 SELECT * FROM Agenda WHERE Nome like 'A%';
 SELECT * FROM Agenda WHERE Nome like 'B%';
