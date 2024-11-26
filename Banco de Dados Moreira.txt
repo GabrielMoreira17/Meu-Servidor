@@ -1,5 +1,3 @@
-CREATE DATABASE Projeto_Integrador;
-
 CREATE TABLE Cadastro
 (
 	id_user SERIAL PRIMARY KEY,
@@ -34,8 +32,10 @@ CREATE TABLE Perfil
 select C.nomeCompleto,P.descricao,C.email, p.cursosExperiencia from Perfil p 
 Inner join Cadastro C on P.user_idfk = C.id_user
 
+drop table Perfil
 
-insert into perfil(descricao, RedesSociais, cursosExperiencia, ativo, user_idfk, login_idfk, cursos_pessoais_idfk, vagas_idfk)
+
+insert into Perfil(descricao, RedesSociais, cursosExperiencia, ativo, user_idfk, login_idfk, cursos_pessoais_idfk, vagas_idfk)
 VALUES('programador', '@pedro12', 'Analista de Sistema', TRUE, 1, 1, 1, 1);
 
 DROP TABLE Perfil
@@ -77,8 +77,11 @@ CREATE TABLE CursosPessoais
 	NomeCursoPessoal varchar (255),
 	duracaoCursoPessoal int,
 	matrizCurricularPessoal varchar (255),
-	precoCursoPessoal int
+	precoCursoPessoal numeric(10,2)
 );
 
 INSERT INTO CursosPessoais (NomeCursoPessoal, duracaoCursoPessoal, matrizCurricularPessoal, precoCursoPessoal) VALUES ('Técnico Desenvolvimento de Sistema', '1200', 'Desenvolvimento Web', '600');
 SELECT * FROM CursosPessoais;
+drop table CursosPessoais;
+
+INSERT INTO CursosPessoais (NomeCursoPessoal, duracaoCursoPessoal, matrizCurricularPessoal, precoCursoPessoal) VALUES ('Eletônica', '1200', 'AC/DC', '600');
