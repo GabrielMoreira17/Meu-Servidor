@@ -1,87 +1,55 @@
-CREATE TABLE Cadastro
-(
-	id_user SERIAL PRIMARY KEY,
-	nomeCompleto varchar(255),
-	telefone varchar (20),
-	CPF varchar (15),
-	email varchar (100),
-	senha varchar (100)
+CREATE DATABASE Projeto_Integrador;
+
+CREATE TABLE Cadastro (
+    id_user SERIAL PRIMARY KEY,
+    nomeCompleto VARCHAR(255) NOT NULL,
+    telefone VARCHAR(15) NOT NULL,
+    CPF VARCHAR(14) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL
 );
 
-TABLE Cadastro;
-DROP TABLE Cadastro;
+drop table Cadastro
+Select * From Cadastro
 
-INSERT INTO Cadastro (nomeCompleto, telefone, CPF, email, senha) VALUES ('Gabriel Moreira', '(46)99105-7504', '100.200.300-90', 'gabriel@email.com', '123');
-
-
-CREATE TABLE Perfil
-(
-	id_perfil serial PRIMARY KEY,
-	descricao varchar (255),
-	RedesSociais varchar (255),
-	cursosExperiencia varchar (255),
-	ativo bool,
-	user_idfk int, FOREIGN KEY (user_idfk) REFERENCES Cadastro(id_user),
-	login_idfk int, FOREIGN KEY (login_idfk) REFERENCES Login(id_login),
-	cursos_pessoais_idfk int, FOREIGN KEY (cursos_pessoais_idfk) REFERENCES CursosPessoais(id_CursosPessoais),
-	vagas_idfk int, FOREIGN KEY (vagas_idfk) REFERENCES Vagas(id_vagas)
+CREATE TABLE Perfil (
+    id_perfil serial PRIMARY KEY,
+    descricao VARCHAR(255),
+    RedesSociais VARCHAR(255),
+    cursosExperiencia VARCHAR(255),
+    ativo BOOLEAN DEFAULT TRUE,
+    user_idfk int, FOREIGN KEY (user_idfk) REFERENCES Cadastro(id_user), 
+    cursos_pessoais_idfk int, FOREIGN KEY (cursos_pessoais_idfk) REFERENCES CursosPessoais(id_CursosPessoais),
+    vagas_idfk int, FOREIGN KEY (vagas_idfk) REFERENCES Vagas(id_vagas)
 );
 
+select C.nomeCompleto, P.descricao, C.email from Perfil p
+Inner join Cadastro C on P.user_idfk
 
 
-select C.nomeCompleto,P.descricao,C.email, p.cursosExperiencia from Perfil p 
-Inner join Cadastro C on P.user_idfk = C.id_user
-
-drop table Perfil
-
-
-insert into Perfil(descricao, RedesSociais, cursosExperiencia, ativo, user_idfk, login_idfk, cursos_pessoais_idfk, vagas_idfk)
-VALUES('programador', '@pedro12', 'Analista de Sistema', TRUE, 1, 1, 1, 1);
-
-DROP TABLE Perfil
-
-CREATE TABLE Login
-(
-	id_login SERIAL PRIMARY KEY,
-	email varchar (255),
-	senha varchar (255)
+CREATE TABLE Cursos (
+    id_Cursos SERIAL PRIMARY KEY,
+    Nome_Curso VARCHAR(255) NOT NULL,
+    Duracao INT NOT NULL,
+    preco DECIMAL(10, 2) NOT NULL,
+    matrizCurricular TEXT
 );
+drop table Cursos
 
-INSERT INTO Login (email, senha) VALUES ('gabriel@email.com', '123456');
-
-CREATE TABLE Cursos
-(
-	id_Cursos SERIAL PRIMARY KEY,
-	Nome_Curso varchar (255),
-	Duracao int,
-	preco int,
-	matrizCurricular varchar(255)
+CREATE TABLE Vagas (
+    id_vagas SERIAL PRIMARY KEY,
+    area VARCHAR(255) NOT NULL,
+    empresa VARCHAR(255) NOT NULL,
+    cargaHoraria INT NOT NULL,
+    salario DECIMAL(10, 2) NOT NULL
 );
+drop table Vagas
 
-INSERT INTO Cursos (Nome_Curso, Duracao, preco, matrizCurricular) VALUES ('Desenvolvimento de Sistema', '1200', '400', 'Desenvolvimento Web, Modelagem de Dados');
-
-CREATE TABLE Vagas
-(
-	id_vagas SERIAL PRIMARY KEY,
-	area varchar (255),
-	empresa varchar (255),
-	cargaHoraria int,
-	salario int
+CREATE TABLE CursosPessoais (
+    id_CursosPessoais SERIAL PRIMARY KEY,
+    NomeCursoPessoal VARCHAR(255) NOT NULL,
+    duracaoCursoPessoal INT NOT NULL,
+    matrizCurricularPessoal TEXT,
+    precoCursoPessoal DECIMAL(10, 2) NOT NULL
 );
-
-INSERT INTO Vagas (area, empresa, cargaHoraria, salario) VALUES ('Tecnologia', 'LearnLab', '40', '10000');
-
-CREATE TABLE CursosPessoais
-(
-	id_CursosPessoais SERIAL PRIMARY KEY,
-	NomeCursoPessoal varchar (255),
-	duracaoCursoPessoal int,
-	matrizCurricularPessoal varchar (255),
-	precoCursoPessoal numeric(10,2)
-);
-
-INSERT INTO CursosPessoais (NomeCursoPessoal, duracaoCursoPessoal, matrizCurricularPessoal, precoCursoPessoal) VALUES ('Técnico Desenvolvimento de Sistema', '1200', 'Desenvolvimento Web', '600');
-SELECT * FROM CursosPessoais;
-drop table CursosPessoais;
-
-INSERT INTO CursosPessoais (NomeCursoPessoal, duracaoCursoPessoal, matrizCurricularPessoal, precoCursoPessoal) VALUES ('Eletônica', '1200', 'AC/DC', '600');
+drop table CursosPessoais
