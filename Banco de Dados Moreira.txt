@@ -6,6 +6,8 @@ CREATE TABLE Cadastro (
     email VARCHAR(100) UNIQUE NOT NULL,
     senha VARCHAR(255) NOT NULL
 );
+TABLE Cadastro
+
 
 INSERT INTO Cadastro (nomeCompleto, telefone, CPF, email, senha)
 VALUES ('Gabriel Moreira', '46991057504', '09087621211', 'gabriel@gmail.com', '123');
@@ -25,7 +27,7 @@ CREATE TABLE Perfil (
 );
 
 INSERT INTO Perfil (descricao, RedesSociais, cursosExperiencia, ativo, user_idfk)
-VALUES ('Estudante de tecnologia', 'gabriel@gmail.com', 'Técnico Desenvolvimento de Sistemas', true, 1);
+VALUES ('Estudante de tecnologia', 'gabriel@gmail.com', 'Técnico Desenvolvimento de Sistemas', true, 2);
 
 SELECT C.nomeCompleto, P.descricao, P.cursosExperiencia, C.email 
 FROM Perfil P
@@ -42,6 +44,8 @@ CREATE TABLE Cursos (
     matrizCurricular TEXT
 );
 
+
+
 CREATE TABLE Vagas (
     id_vagas SERIAL PRIMARY KEY,
     area VARCHAR(255) NOT NULL,
@@ -57,3 +61,12 @@ CREATE TABLE CursosPessoais (
     matrizCurricularPessoal TEXT,
     precoCursoPessoal DECIMAL(10, 2) NOT NULL
 );
+ALTER TABLE CursosPessoais ADD COLUMN imagem varchar(255);
+ALTER TABLE CursosPessoais ADD COLUMN idfk_user int
+ALTER TABLE CursosPessoais ADD CONSTRAINT idfk_user FOREIGN KEY (idfk_user) references Cadastro (id_user);
+ALTER TABLE CursosPessoais DROP COLUMN idfk_perfil
+
+UPDATE CursosPessoais SET idfk_user = 1;
+UPDATE CursosPessoais SET imagem = 'CSSprojeto/img/imagem.jpg';
+SELECT * FROM CursosPessoais
+INSERT INTO CursosPessoais (NomeCursoPessoal, duracaoCursoPessoal, matrizCurricularPessoal, precoCursoPessoal) VALUES ('Tecnico Elétrica 2', 200, 'Matematica', 0.00); 
