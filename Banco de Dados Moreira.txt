@@ -7,7 +7,7 @@ CREATE TABLE Cadastro (
     senha VARCHAR(255) NOT NULL
 );
 TABLE Cadastro
-
+DELETE FROM Cadastro WHERE id_user = 11;
 
 INSERT INTO Cadastro (nomeCompleto, telefone, CPF, email, senha)
 VALUES ('Gabriel Moreira', '46991057504', '09087621211', 'gabriel@gmail.com', '123');
@@ -62,11 +62,14 @@ CREATE TABLE CursosPessoais (
     precoCursoPessoal DECIMAL(10, 2) NOT NULL
 );
 ALTER TABLE CursosPessoais ADD COLUMN imagem varchar(255);
-ALTER TABLE CursosPessoais ADD COLUMN idfk_user int
+ALTER TABLE Perfil ADD COLUMN curriculo_url varchar(255);
+ALTER TABLE CursosPessoais ADD COLUMN idfk_user int;
 ALTER TABLE CursosPessoais ADD CONSTRAINT idfk_user FOREIGN KEY (idfk_user) references Cadastro (id_user);
-ALTER TABLE CursosPessoais DROP COLUMN idfk_perfil
+ALTER TABLE CursosPessoais DROP COLUMN idfk_perfil;
+ALTER TABLE CursosPessoais ADD COLUMN andamento BOOL;
 
-UPDATE CursosPessoais SET idfk_user = 1;
-UPDATE CursosPessoais SET imagem = 'CSSprojeto/img/imagem.jpg';
+UPDATE CursosPessoais SET idfk_user = 2;
+UPDATE CursosPessoais SET imagem = 'CSSprojeto/img/images.jpg' where id_cursospessoais = 2;
+UPDATE CursosPessoais SET andamento = FALSE WHERE id_cursospessoais = 2;
 SELECT * FROM CursosPessoais
 INSERT INTO CursosPessoais (NomeCursoPessoal, duracaoCursoPessoal, matrizCurricularPessoal, precoCursoPessoal) VALUES ('Tecnico Elétrica 2', 200, 'Matematica', 0.00); 
