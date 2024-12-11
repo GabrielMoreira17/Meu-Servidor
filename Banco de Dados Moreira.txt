@@ -17,6 +17,7 @@ CREATE TABLE Perfil (
     descricao VARCHAR(255),
     RedesSociais VARCHAR(255),
     cursosExperiencia VARCHAR(255),
+	curriculo_url varchar(255),
     ativo BOOLEAN DEFAULT TRUE,
     user_idfk int, 
     FOREIGN KEY (user_idfk) REFERENCES Cadastro(id_user),
@@ -33,7 +34,6 @@ SELECT C.nomeCompleto, P.descricao, P.cursosExperiencia, C.email
 FROM Perfil P
 INNER JOIN Cadastro C ON P.user_idfk = C.id_user;
 
-
 table perfil
 
 CREATE TABLE Cursos (
@@ -43,8 +43,6 @@ CREATE TABLE Cursos (
     preco DECIMAL(10, 2) NOT NULL,
     matrizCurricular TEXT
 );
-
-
 
 CREATE TABLE Vagas (
     id_vagas SERIAL PRIMARY KEY,
@@ -59,14 +57,10 @@ CREATE TABLE CursosPessoais (
     NomeCursoPessoal VARCHAR(255) NOT NULL,
     duracaoCursoPessoal INT NOT NULL,
     matrizCurricularPessoal TEXT,
-    precoCursoPessoal DECIMAL(10, 2) NOT NULL
+	imagem varchar (255),
+    precoCursoPessoal DECIMAL(10, 2) NOT NULL,
+	andamento BOOL
 );
-ALTER TABLE CursosPessoais ADD COLUMN imagem varchar(255);
-ALTER TABLE Perfil ADD COLUMN curriculo_url varchar(255);
-ALTER TABLE CursosPessoais ADD COLUMN idfk_user int;
-ALTER TABLE CursosPessoais ADD CONSTRAINT idfk_user FOREIGN KEY (idfk_user) references Cadastro (id_user);
-ALTER TABLE CursosPessoais DROP COLUMN idfk_perfil;
-ALTER TABLE CursosPessoais ADD COLUMN andamento BOOL;
 
 UPDATE CursosPessoais SET idfk_user = 2;
 UPDATE CursosPessoais SET imagem = 'CSSprojeto/img/images.jpg' where id_cursospessoais = 2;
