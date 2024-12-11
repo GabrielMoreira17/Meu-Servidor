@@ -57,9 +57,9 @@ CREATE TABLE CursosPessoais (
     NomeCursoPessoal VARCHAR(255) NOT NULL,
     duracaoCursoPessoal INT NOT NULL,
     matrizCurricularPessoal TEXT,
-	imagem varchar (255),
+    imagem varchar (255),
     precoCursoPessoal DECIMAL(10, 2) NOT NULL,
-	andamento BOOL
+    andamento BOOL
 );
 
 UPDATE CursosPessoais SET idfk_user = 2;
