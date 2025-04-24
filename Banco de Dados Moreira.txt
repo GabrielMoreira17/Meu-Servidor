@@ -17,7 +17,7 @@ CREATE TABLE Perfil (
     descricao VARCHAR(255),
     RedesSociais VARCHAR(255),
     cursosExperiencia VARCHAR(255),
-	curriculo_url varchar(255),
+    curriculo_url varchar(255),
     ativo BOOLEAN DEFAULT TRUE,
     user_idfk int, 
     FOREIGN KEY (user_idfk) REFERENCES Cadastro(id_user),
